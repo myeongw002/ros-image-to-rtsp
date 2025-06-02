@@ -34,13 +34,13 @@ void loadConfig(const std::string& path) {
         WIDTH, HEIGHT, FPS, TOPIC.c_str(), TOPIC_TYPE.c_str(), RTSP_URL.c_str());
 }
 
-// sensor_msgs/Image 콜백
+// Callback for sensor_msgs/Image
 void imageCallback(const sensor_msgs::ImageConstPtr& msg) {
     try {
         cv_bridge::CvImageConstPtr cv_ptr = cv_bridge::toCvShare(msg, "bgr8");
         cv::Mat img = cv_ptr->image;
         if (img.empty()) {
-            ROS_WARN("Image 토픽: 디코딩 실패");
+            ROS_WARN("Image topic: decode failed");
             return;
         }
         if (img.cols != WIDTH || img.rows != HEIGHT)
@@ -48,16 +48,16 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg) {
         std::lock_guard<std::mutex> lock(img_mutex);
         latest_img = img.clone();
     } catch (cv_bridge::Exception& e) {
-        ROS_ERROR("cv_bridge 예외: %s", e.what());
+        ROS_ERROR("cv_bridge exception: %s", e.what());
     }
 }
 
-// sensor_msgs/CompressedImage 콜백
+// Callback for sensor_msgs/CompressedImage
 void compressedImageCallback(const sensor_msgs::CompressedImageConstPtr& msg) {
     try {
         cv::Mat img = cv::imdecode(cv::Mat(msg->data), cv::IMREAD_COLOR);
         if (img.empty()) {
-            ROS_WARN("CompressedImage 토픽: 디코딩 실패");
+            ROS_WARN("CompressedImage topic: decode failed");
             return;
         }
         if (img.cols != WIDTH || img.rows != HEIGHT)
@@ -65,7 +65,7 @@ void compressedImageCallback(const sensor_msgs::CompressedImageConstPtr& msg) {
         std::lock_guard<std::mutex> lock(img_mutex);
         latest_img = img.clone();
     } catch (cv::Exception& e) {
-        ROS_ERROR("cv::imdecode 예외: %s", e.what());
+        ROS_ERROR("cv::imdecode exception: %s", e.what());
     }
 }
 
@@ -81,7 +81,7 @@ void ffmpegWriter() {
 
     FILE* pipe = popen(ffmpeg_cmd, "w");
     if (!pipe) {
-        ROS_ERROR("FFmpeg 프로세스 실행 실패");
+        ROS_ERROR("Failed to start FFmpeg process");
         return;
     }
     std::vector<uchar> zero_frame(WIDTH * HEIGHT * 3, 0);
@@ -117,15 +117,15 @@ int main(int argc, char** argv) {
     ros::Subscriber sub;
     if (TOPIC_TYPE == "image") {
         sub = nh.subscribe(TOPIC, 1, imageCallback);
-        ROS_INFO("sensor_msgs/Image 타입 구독");
+        ROS_INFO("Subscribing as sensor_msgs/Image");
     } else {
         sub = nh.subscribe(TOPIC, 1, compressedImageCallback);
-        ROS_INFO("sensor_msgs/CompressedImage 타입 구독");
+        ROS_INFO("Subscribing as sensor_msgs/CompressedImage");
     }
 
     std::thread writer_thread(ffmpegWriter);
 
-    ROS_INFO("RTSP 송출 노드(C++) 시작");
+    ROS_INFO("RTSP streaming node (C++) started");
     ros::spin();
 
     running = false;

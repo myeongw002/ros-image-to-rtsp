@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(rtsp_image_sender)
+project(ros_image_to_rtsp)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -17,6 +17,6 @@ include_directories(
   ${OpenCV_INCLUDE_DIRS}
 )
 
-add_executable(compressedimage_to_rtsp_cpp src/compressedimage_to_rtsp_cpp.cpp)
-target_link_libraries(compressedimage_to_rtsp_cpp ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} yaml-cpp)
+add_executable(image_to_rtsp_cpp src/image_to_rtsp_cpp.cpp)
+target_link_libraries(image_to_rtsp_cpp ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} yaml-cpp)
 
