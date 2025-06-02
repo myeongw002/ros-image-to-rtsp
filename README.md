@@ -46,7 +46,7 @@ fps: 30
 
 3. **Run the node**:
     ```bash
-    rosrun your_package_name compressedimage_to_rtsp_cpp _config:=/path/to/config.yaml
+    roslaunch ros_image_to_rtsp rtsp_sender.launch
     ```
 
 4. **View the stream** in VLC or ffplay:
