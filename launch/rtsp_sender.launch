@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="rtsp_image_sender" type="compressedimage_to_rtsp_cpp" name="rtsp_sender" output="screen">
+    <param name="config" value="$(find rtsp_image_sender)/config/config.yaml"/>
+  </node>
+</launch>
+
