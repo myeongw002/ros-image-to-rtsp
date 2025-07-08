@@ -41,7 +41,7 @@ fps: 30
 
 2. **Start your RTSP server** (example: rtsp-simple-server):
     ```bash
-    ./rtsp-simple-server
+    ./mediamtx
     ```
 
 3. **Run the node**:

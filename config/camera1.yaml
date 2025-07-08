@@ -1,0 +1,7 @@
+rtsp_url: "rtsp://localhost:8554/stream1"
+topic: "/camera1/image_color/compressed"
+topic_type: "compressed"  # "image" 또는 "compressed"
+width: 1024
+height: 768
+fps: 10
+

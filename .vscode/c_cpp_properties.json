@@ -1,0 +1,40 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/myungw00/ROS/catkin_ws/devel/include/**",
+        "/home/myungw00/ROS/ws_livox/devel/include/**",
+        "/home/myungw00/ROS/posco_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/myungw00/ROS/posco_ws/src/camera_aravis/include/**",
+        "/home/myungw00/ROS/posco_ws/src/camera_base/include/**",
+        "/home/myungw00/ROS/catkin_ws/src/cone_mission/include/**",
+        "/home/myungw00/ROS/catkin_ws/src/mapviz/mapviz/include/**",
+        "/home/myungw00/ROS/catkin_ws/src/mapviz/mapviz_plugins/include/**",
+        "/home/myungw00/ROS/catkin_ws/src/microstrain_inertial/microstrain_inertial_driver/include/**",
+        "/home/myungw00/ROS/catkin_ws/src/mapviz/multires_image/include/**",
+        "/home/myungw00/ROS/posco_ws/src/ouster-ros/include/**",
+        "/home/myungw00/ROS/posco_ws/src/projection2/include/**",
+        "/home/myungw00/ROS/catkin_ws/src/pylon-ros-camera/pylon_camera/include/**",
+        "/home/myungw00/ROS/rtsp_ws/src/ros_image_to_rtsp/include/**",
+        "/home/myungw00/ROS/posco_ws/src/sensor_control/include/**",
+        "/home/myungw00/ROS/posco_ws/src/flir_camera_driver/spinnaker_camera_driver/include/**",
+        "/home/myungw00/ROS/catkin_ws/src/mapviz/tile_map/include/**",
+        "/home/myungw00/ROS/catkin_ws/src/ublox_f9p/ublox_gps/include/**",
+        "/home/myungw00/ROS/catkin_ws/src/ublox_f9p/ublox_msgs/include/**",
+        "/home/myungw00/ROS/catkin_ws/src/ublox_f9p/ublox_serialization/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

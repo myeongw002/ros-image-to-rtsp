@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="ros_image_to_rtsp" type="image_to_rtsp_cpp" name="rtsp_sender1" output="screen">
+    <param name="config" value="$(find ros_image_to_rtsp)/config/camera1.yaml"/>
+  </node>
+</launch>
+
